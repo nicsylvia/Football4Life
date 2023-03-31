@@ -14,14 +14,14 @@ import { useForm } from "react-hook-form";
 import { NavLink, useNavigate } from "react-router-dom";
 
 import { useMutation } from "@tanstack/react-query";
-import { UseAppDispatch } from "../Global/Store";
+import { UseAppDispatch, UseAppSelector } from "../Global/Store";
 import { Login } from "../api/User";
 import { registerClient } from "../Global/reduxState";
 
 const SignIn = () => {
   const navigate = useNavigate();
   const dispatch = UseAppDispatch();
-
+  const user = UseAppSelector((state) => state.Client);
   const userSchema = yup
     .object({
       email: yup.string().required("please enter an email"),
@@ -48,7 +48,6 @@ const SignIn = () => {
       dispatch(registerClient(myData.data));
 
       Swal.fire({
-        title: "Login succesful",
         html: "Taking you to your dashboard",
         timer: 1000,
         timerProgressBar: true,
@@ -58,7 +57,11 @@ const SignIn = () => {
         },
 
         willClose: () => {
-          navigate("/admindashboard");
+          if (user?.isAdmin === false) {
+            navigate("/userdashboard");
+          } else {
+            navigate("/admindashboard");
+          }
         },
       });
     },

@@ -5,17 +5,10 @@ import { FaMoneyBillAlt } from "react-icons/fa";
 import { GiExpense } from "react-icons/gi";
 import { MdOutlineAccountBalanceWallet } from "react-icons/md";
 import styled from "styled-components";
-// import { getOneAdmin } from "../api/adminEndpoints";
-// import { UseAppSelector } from "../Global/Store";
+import { UseAppSelector } from "../Global/Store";
 
 const Cards = () => {
-  // const user = UseAppSelector((state) => state.Admin);
-  // const getAdmin = useQuery({
-  //   queryKey: ["singleAdmin"],
-  //   queryFn: () => getOneAdmin(user?._id),
-  // });
-
-
+  const user = UseAppSelector((state) => state.Client);
   return (
     <Container>
       <Card>
@@ -23,54 +16,24 @@ const Cards = () => {
           <IconHold
             style={{
               backgroundColor: "#2a9d8f",
-            }}
-          >
+            }}>
             <MdOutlineAccountBalanceWallet />
           </IconHold>
-          <CardTitle>wallet Number </CardTitle>
+          <CardTitle>Name: {user?.name} </CardTitle>
           <CardInfo></CardInfo>
         </CardHold>
       </Card>
-      <Card>
-        <CardHold>
-          <IconHold
-            style={{
-              backgroundColor: "#e9c46a",
-            }}
-          >
-            <FaMoneyBillAlt />
-          </IconHold>
-          <CardTitle>Company name</CardTitle>
-          <CardInfo></CardInfo>
-        </CardHold>
-      </Card>
+
       <Card>
         <CardHold>
           <IconHold
             style={{
               backgroundColor: "#f4a261",
-            }}
-          >
+            }}>
             <GiExpense />
           </IconHold>
-          <CardTitle>Company code</CardTitle>
+          <CardTitle>Admin ID: {user?._id}</CardTitle>
           <CardInfo> </CardInfo>
-        </CardHold>
-      </Card>
-      <Card>
-        <CardHold>
-          <IconHold
-            style={{
-              backgroundColor: "#e76f51",
-            }}
-          >
-            <BsFillPiggyBankFill />
-          </IconHold>
-          <CardTitle>Balance</CardTitle>
-      
-          
-            <CardInfo> </CardInfo>
-          
         </CardHold>
       </Card>
     </Container>
@@ -82,7 +45,7 @@ export default Cards;
 const Container = styled.div`
   display: flex;
   flex-wrap: wrap;
-  @media screen and (max-width: 768px){
+  @media screen and (max-width: 768px) {
     display: flex;
     justify-content: center;
   }

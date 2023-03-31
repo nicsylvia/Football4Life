@@ -64,7 +64,7 @@ const Signup = () => {
         timerProgressBar: true,
 
         willClose: () => {
-          navigate("/admindashboard");
+          navigate("/userdashboard");
         },
       });
     },

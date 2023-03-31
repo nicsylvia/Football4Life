@@ -9,6 +9,7 @@ interface userData {
   phoneNumber: string;
   confirmPassword: string;
   _id: any;
+  isAdmin: boolean;
 }
 
 interface AdminData {
