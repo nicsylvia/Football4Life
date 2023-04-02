@@ -12,23 +12,10 @@ import { UseAppSelector, UseAppDispatch } from "../Global/Store";
 import Swal from "sweetalert2";
 
 const Dashhead = () => {
-  // const { userID } = useParams();
-
-  // To bring in the user or admin to the dashboard header:
   const GetAdmin = UseAppSelector((state) => state.Client);
 
   console.log(GetAdmin);
-  // To read a single user from the redux state
-  // const ReadMyAdmin = ReadEntireUsers.filter((item) => item._id === userID);
 
-  // Function for one user using tanstack query:
-  // const Admin = useQuery({
-  //   queryKey: ["Official Admin", userID],
-  //   queryFn: () => {
-  //     return SingleAdmin(userID);
-  //   },
-  // });
-  // console.log(Admin);
   const navigate = useNavigate();
 
   const user = UseAppSelector((state) => state.Client);
